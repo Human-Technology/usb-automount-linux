@@ -72,10 +72,10 @@ cat /var/log/usb-automount.log
 
 El comando debería mostrar tu dispositivo USB montado en /media/usb-*.
 
-### Solución de problemas
+## Solución de problemas
 - ¿El dispositivo no se monta? Asegúrate de que el script tiene permisos de ejecución y está ubicado en /usr/local/bin/.
 - ¿No se crea el punto de montaje? Revisa los logs en /var/log/usb-automount.log para ver si hay errores.
 - ¿Problemas de permisos? Asegúrate de que tienes los permisos necesarios para escribir en /media/ y ejecutar el script como root.
 
-### Contribuir
+## Contribuir
 Si encuentras algún problema o te gustaría contribuir al proyecto, siéntete libre de abrir un pull request o reportar un issue.
