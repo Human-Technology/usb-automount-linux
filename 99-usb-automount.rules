@@ -1,0 +1,5 @@
+# Regla para montar automáticamente dispositivos USB cuando se conectan
+ACTION=="add", SUBSYSTEM=="block", KERNEL=="sd[a-z][0-9]", RUN+="/usr/local/bin/usb-automount.sh %k add"
+
+# Regla para desmontar automáticamente dispositivos USB cuando se desconectan
+ACTION=="remove", SUBSYSTEM=="block", KERNEL=="sd[a-z][0-9]", RUN+="/usr/local/bin/usb-automount.sh %k remove"
