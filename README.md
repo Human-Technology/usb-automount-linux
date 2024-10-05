@@ -28,7 +28,7 @@ cd usb-automount-linux
 
 ### 2. Copiar el script de montaje
 
-Copia el script usb-automount.sh al directorio /usr/local/bin/ y dale permisos de ejecución:
+Copia el script **usb-automount.sh** al directorio **/usr/local/bin/** y dale permisos de ejecución:
 
 ```bash
 sudo cp usb-automount.sh /usr/local/bin/
@@ -37,7 +37,7 @@ sudo chmod +x /usr/local/bin/usb-automount.sh
 
 ### 3. Crear la regla de udev
 
-Copia el archivo 99-usb-automount.rules al directorio /etc/udev/rules.d/:
+Copia el archivo **99-usb-automount.rules** al directorio **/etc/udev/rules.d/**:
 
 ```bash
 sudo cp 99-usb-automount.rules /etc/udev/rules.d/
@@ -64,7 +64,7 @@ El comando debería mostrar tu dispositivo USB montado en /media/usb-*.
 
 ### 6. Ver logs
 
-El script registra todas las acciones de montaje y desmontaje en /var/log/usb-automount.log. Puedes consultar el log con:
+El script registra todas las acciones de montaje y desmontaje en **/var/log/usb-automount.log**. Puedes consultar el log con:
 
 ```bash
 cat /var/log/usb-automount.log
@@ -73,9 +73,9 @@ cat /var/log/usb-automount.log
 El comando debería mostrar tu dispositivo USB montado en /media/usb-*.
 
 ## Solución de problemas
-- ¿El dispositivo no se monta? Asegúrate de que el script tiene permisos de ejecución y está ubicado en /usr/local/bin/.
-- ¿No se crea el punto de montaje? Revisa los logs en /var/log/usb-automount.log para ver si hay errores.
-- ¿Problemas de permisos? Asegúrate de que tienes los permisos necesarios para escribir en /media/ y ejecutar el script como root.
+- **¿El dispositivo no se monta?** Asegúrate de que el script tiene permisos de ejecución y está ubicado en /usr/local/bin/.
+- **¿No se crea el punto de montaje?** Revisa los logs en /var/log/usb-automount.log para ver si hay errores.
+- **¿Problemas de permisos?** Asegúrate de que tienes los permisos necesarios para escribir en /media/ y ejecutar el script como root.
 
 ## Contribuir
 Si encuentras algún problema o te gustaría contribuir al proyecto, siéntete libre de abrir un pull request o reportar un issue.
