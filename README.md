@@ -7,11 +7,11 @@ Este proyecto proporciona un script y las configuraciones necesarias para automa
 - [Requisitos Previos](#requisitos-previos)
 - [Características](#características)
 - [Instalación](#instalación)
-  - [1. Clonar el Repositorio](#1-clonar-el-repositorio)
-  - [2. Configurar el Script de Automontaje](#2-configurar-el-script-de-automontaje)
+  - [1. Clonar el Repositorio](#1-clonar-este-repositorio)
+  - [2. Configurar el Script de Automontaje](#2-copiar-el-script-de-montaje)
   - [3. Configurar el Servicio de systemd](#3-configurar-el-servicio-de-systemd)
-  - [4. Configurar las Reglas de udev](#4-configurar-las-reglas-de-udev)
-  - [5. Recargar las Configuraciones](#5-recargar-las-configuraciones)
+  - [4. Configurar las Reglas de udev](#4-crear-las-reglas-de-udev)
+  - [5. Recargar las Configuraciones](#5-recarga-las-configuraciones)
 - [Ver logs](#ver-logs)
 - [Uso](#uso)
 - [Solución de Problemas](#solución-de-problemas)
@@ -102,7 +102,7 @@ Copia el archivo `99-usb-automount.rules` al directorio `/etc/udev/rules.d/`:
 sudo cp 99-usb-automount.rules /etc/udev/rules.d/
 ```
 
-### 4. Recarga las configuraciones
+### 5. Recarga las configuraciones
 
 Despues de copiar y configurar los archivos, es necesario recargar las reglas de udev y los archivos de servicio de systemd:
 
