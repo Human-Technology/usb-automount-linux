@@ -43,24 +43,28 @@ if [ "$action" == "add" ]; then
 
     # Montar el dispositivo según el tipo de sistema de archivos
     if [ "$fs_type" == "ntfs" ]; then
+        #Si es NTFS, utilizamos ntfs-3g
         if /bin/mount -t ntfs-3g "/dev/$device" "$mountpoint"; then
             echo "$(date) - Dispositivo /dev/$device (NTFS) montado en $mountpoint" >> /var/log/usb-automount.log
         else
             echo "$(date) - Error al montar /dev/$device (NTFS)" >> /var/log/usb-automount.log
         fi
     elif [[ "$fs_type" == ext* ]]; then
+        #Si es un sistema de archivo ext(ext2, ext3, ext4)
         if /bin/mount -t "$fs_type" "/dev/$device" "$mountpoint"; then
             echo "$(date) - Dispositivo /dev/$device ($fs_type) montado en $mountpoint" >> /var/log/usb-automount.log
         else
             echo "$(date) - Error al montar /dev/$device ($fs_type)" >> /var/log/usb-automount.log
         fi
     elif [ "$fs_type" == "vfat" ] || [ "$fs_type" == "exfat" ]; then
+        #Si es FAT32 o exFAT
         if /bin/mount -t "$fs_type" "/dev/$device" "$mountpoint"; then
             echo "$(date) - Dispositivo /dev/$device ($fs_type) montado en $mountpoint" >> /var/log/usb-automount.log
         else
             echo "$(date) - Error al montar /dev/$device ($fs_type)" >> /var/log/usb-automount.log
         fi
     else
+        #Para otros sistemas de archivos desconocidos
         if /bin/mount "/dev/$device" "$mountpoint"; then
             echo "$(date) - Dispositivo /dev/$device montado en $mountpoint con sistema de archivos $fs_type" >> /var/log/usb-automount.log
         else
@@ -79,7 +83,7 @@ if [ "$action" == "remove" ]; then
         echo "$(date) - Dispositivo /dev/$device desmontado de $mountpoint" >> /var/log/usb-automount.log
     else
         echo "$(date) - Error al desmontar /dev/$device desde $mountpoint, intentando forzar el desmontaje" >> /var/log/usb-automount.log
-        /bin/umount -l "$mountpoint" 2>/dev/null
+        /bin/umount -l "$mountpoint" 2>/dev/null #Desmontaje Perezoso
     fi
 
     # Eliminar el directorio de montaje si ya no está montado
