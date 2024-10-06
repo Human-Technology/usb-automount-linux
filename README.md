@@ -38,7 +38,7 @@ Sigue estos pasos para configurar el montaje y desmontaje automático de USB en 
 Primero, clona el repositorio en tu máquina local:
 
 ```bash
-git clone https://github.com/tu-usuario/usb-automount-linux.git
+git clone [https://github.com/tu-usuario/usb-automount-linux.git](https://github.com/Human-Technology/usb-automount-linux.git)
 cd usb-automount-linux
 ```
 
