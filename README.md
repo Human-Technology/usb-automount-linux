@@ -5,7 +5,7 @@ Este proyecto proporciona un script y las configuraciones necesarias para automa
 ## Índice
 
 - [Requisitos Previos](#requisitos-previos)
-- [Características](#caracterisiticas)
+- [Características](#características)
 - [Instalación](#instalación)
   - [1. Clonar el Repositorio](#1-clonar-el-repositorio)
   - [2. Configurar el Script de Automontaje](#2-configurar-el-script-de-automontaje)
