@@ -117,7 +117,7 @@ Una vez completada la instalación, el sistema montará automáticamente cualqui
 - **Montaje automático:**
   Al conectar una unidad USB, se montará automáticamente en `/media/usb-[dispositivo]`, donde `[dispositivo]` es el identificador del dispositivo, como `sdb1`.
   
-- **Montaje automático:**
+- **Desmontaje automático:**
   Al desconectar la unidad USB, el sistema desmontará el dispositivo y eliminará el directorio de montaje correspondiente.
   
 ## Ver logs
