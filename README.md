@@ -12,6 +12,7 @@ Este proyecto proporciona un script y las configuraciones necesarias para automa
   - [3. Configurar el Servicio de systemd](#3-configurar-el-servicio-de-systemd)
   - [4. Configurar las Reglas de udev](#4-configurar-las-reglas-de-udev)
   - [5. Recargar las Configuraciones](#5-recargar-las-configuraciones)
+- [Ver logs](#ver-logs)
 - [Uso](#uso)
 - [Solución de Problemas](#solución-de-problemas)
 
@@ -110,7 +111,7 @@ sudo udevadm control --reload-rules
 sudo systemctl daemon-reload
 ```
 
-### 5. Uso
+## Uso
 Una vez completada la instalación, el sistema montará automáticamente cualquier dispositivo USB que conectes y desmontará y limpiará el punto de montaje al desconectarlo, incluso si la desconexión es abrupta.
 
 - **Montaje automático:**
@@ -119,7 +120,7 @@ Una vez completada la instalación, el sistema montará automáticamente cualqui
 - **Montaje automático:**
   Al desconectar la unidad USB, el sistema desmontará el dispositivo y eliminará el directorio de montaje correspondiente.
   
-### 6. Ver logs
+## Ver logs
 
 El script registra todas las acciones de montaje y desmontaje en `/var/log/usb-automount.log`. Puedes consultar el log con:
 
