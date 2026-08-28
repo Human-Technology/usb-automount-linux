@@ -1,0 +1,16 @@
+#!/bin/bash
+# Example post-mount hook for usb-automount.
+# Copy this file without the .sample suffix and make it executable to activate.
+#
+# Environment variables supplied by usb-automount:
+#   USB_DEVICE      Device name, for example sdb1
+#   USB_MOUNTPOINT  Mount point, for example /media/BACKUP
+#   USB_FSTYPE      Filesystem type
+#   USB_LABEL       Filesystem label (may be empty)
+#   USB_UUID        Filesystem UUID (may be empty)
+#   USB_ACTION      post-mount or post-unmount
+
+if [ "$USB_ACTION" = "post-mount" ] && [ "$USB_UUID" = "YOUR-UUID-HERE" ]; then
+    # Example: rsync -a /srv/documents/ "$USB_MOUNTPOINT/backup/"
+    printf 'Backup drive %s mounted at %s\n' "$USB_DEVICE" "$USB_MOUNTPOINT"
+fi

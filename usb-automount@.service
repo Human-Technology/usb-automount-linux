@@ -1,5 +1,6 @@
 [Unit]
-Description=Automontaje de USB para %I
+Description=USB automount for %I
+StopWhenUnneeded=yes
 Requires=dev-%i.device
 BindsTo=dev-%i.device
 After=dev-%i.device
@@ -7,10 +8,10 @@ After=dev-%i.device
 [Service]
 Type=oneshot
 RemainAfterExit=yes
+ExecStartPre=sleep 1
 ExecStart=/usr/local/bin/usb-automount.sh %I add
 ExecStop=/usr/local/bin/usb-automount.sh %I remove
 TimeoutStopSec=5s
 
 [Install]
 WantedBy=dev-%i.device
-

@@ -1,0 +1,3 @@
+# SC2034: configuration variables may be consumed after sourcing a config file.
+disable=SC2034
+shell=bash

@@ -1,3 +1,5 @@
-# Regla para montar automáticamente dispositivos USB cuando se conectan
-# Regla para desmontar automáticamente dispositivos USB cuando se desconectan
-ACTION=="add|remove", SUBSYSTEM=="block", KERNEL=="sd[a-z][0-9]", ENV{ID_FS_USAGE}=="filesystem", ENV{SYSTEMD_WANTS}="usb-automount@%k.service"
+# USB automount rules — trigger a systemd service when storage is inserted.
+# Unmounting is handled by systemd BindsTo= when the device disappears.
+# Matches USB disks (sda1, sdb12) and SD cards (mmcblk0p1, mmcblk0p12).
+ACTION=="add", SUBSYSTEM=="block", SUBSYSTEMS=="usb", KERNEL=="sd[a-z]*[0-9]*", ENV{ID_FS_USAGE}=="filesystem", TAG+="systemd", ENV{SYSTEMD_WANTS}="usb-automount@%k.service"
+ACTION=="add", SUBSYSTEM=="block", KERNEL=="mmcblk[0-9]*p[0-9]*", ENV{ID_FS_USAGE}=="filesystem", TAG+="systemd", ENV{SYSTEMD_WANTS}="usb-automount@%k.service"

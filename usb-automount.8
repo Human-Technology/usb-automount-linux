@@ -1,0 +1,128 @@
+.TH USB-AUTOMOUNT 8 "2026-08-27" "usb-automount 2.0" "System Administration"
+.SH NAME
+usb-automount \- automatic USB storage device mounting for Linux
+.SH SYNOPSIS
+.B usb-automount.sh
+.I device
+.I action
+.SH DESCRIPTION
+.B usb-automount
+automatically mounts and unmounts USB and SD-card filesystem partitions on Linux
+systems. It is designed for headless servers, Raspberry Pi, and minimal desktop
+environments where no graphical file manager handles removable storage.
+.PP
+Devices are mounted using their filesystem label when available, for example
+.IR /media/MY_USB_DRIVE ,
+falling back to a device name such as
+.IR /media/usb-sdb1 .
+.PP
+Executable post-mount and post-unmount hooks can trigger automated actions such
+as backups or synchronization.
+.SH CONFIGURATION
+Configuration is stored in
+.IR /etc/usb-automount/usb-automount.conf .
+.TP
+.B MOUNT_DIR
+Base directory for mount points. Default:
+.IR /media .
+.TP
+.B USE_LABEL
+Use filesystem labels for mount point names. Default:
+.IR true .
+.TP
+.B MIN_PARTITION_SIZE
+Minimum partition size in bytes to mount. Default:
+.IR 104857600
+(100 MiB).
+.TP
+.B EXCLUDED_DEVICES
+Comma-separated list of device names to never mount.
+.TP
+.B LOG_FILE
+Log file path. Default:
+.IR /var/log/usb-automount.log .
+.TP
+.B NOTIFY
+Desktop notification mode:
+.IR auto ,
+.IR always ,
+or
+.IR never .
+.TP
+.B HOOKS_DIR
+Directory containing executable hook scripts. Default:
+.IR /etc/usb-automount/hooks.d .
+.SH HOOKS
+Executable scripts in the hooks directory run after successful mount and
+unmount operations. They receive these environment variables:
+.TP
+.B USB_DEVICE
+Device name, for example sdb1.
+.TP
+.B USB_MOUNTPOINT
+Mount point path.
+.TP
+.B USB_FSTYPE
+Filesystem type.
+.TP
+.B USB_LABEL
+Filesystem label, which may be empty.
+.TP
+.B USB_UUID
+Filesystem UUID, which may be empty.
+.TP
+.B USB_ACTION
+Either
+.B post-mount
+or
+.BR post-unmount .
+.SH FILES
+.TP
+.I /usr/local/bin/usb-automount.sh
+Main script.
+.TP
+.I /etc/usb-automount/usb-automount.conf
+Configuration file.
+.TP
+.I /etc/usb-automount/hooks.d/
+Hook scripts directory.
+.TP
+.I /etc/udev/rules.d/99-usb-automount.rules
+udev rules.
+.TP
+.I /etc/systemd/system/usb-automount@.service
+systemd template service.
+.TP
+.I /var/log/usb-automount.log
+Log file.
+.SH EXAMPLES
+Install usb-automount:
+.PP
+.nf
+.RS
+sudo ./install.sh
+.RE
+.fi
+.PP
+Create a backup hook:
+.PP
+.nf
+.RS
+#!/bin/bash
+if [ "$USB_ACTION" = "post-mount" ] && [ "$USB_UUID" = "1234-ABCD" ]; then
+    rsync -av /home/user/docs/ "$USB_MOUNTPOINT/backup/"
+fi
+.RE
+.fi
+.SH SEE ALSO
+.BR mount (8),
+.BR umount (8),
+.BR blkid (8),
+.BR udev (7),
+.BR systemd.service (5)
+.SH AUTHORS
+José Sánchez <https://github.com/Human-Technology>
+.SH BUGS
+Report bugs at:
+.UR https://github.com/Human-Technology/usb-automount-linux/issues
+.UE
