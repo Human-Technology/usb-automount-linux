@@ -12,6 +12,9 @@ daemon to keep running.
 
 > 🇪🇸 [Leer en Español](README.es.md)
 
+For installation, configuration, hooks, backups, and troubleshooting, see the
+[full manual](docs/MANUAL.en.md).
+
 ## Features
 
 - Automatic mount and unmount through udev and systemd.

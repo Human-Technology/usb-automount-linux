@@ -12,6 +12,9 @@ mantener un demonio en ejecución.
 
 > 🇬🇧 [Read in English](README.md)
 
+Para la instalación, configuración, hooks, respaldos y solución de problemas,
+consulta el [manual completo](docs/MANUAL.es.md).
+
 ## Características
 
 - Montaje y desmontaje automático mediante udev y systemd.
